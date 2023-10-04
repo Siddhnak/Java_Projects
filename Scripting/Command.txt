@@ -1,0 +1,11 @@
+This is command the 1st grep command.
+IT's case sensitive
+
+use for getting the c
+grep -i 'Baba' Greptest.txt 
+
+
+ubuntu@DESKTOP-4OBRHG1:/mnt/f/Ebooks/Java/Code/Scripting$ grep 'Java' Greptest.txt
+#1. Search for the lines that have the word 'Java'
+Java
+ubuntu@DESKTOP-4OBRHG1:/mnt/f/Ebooks/Java/Code/Scripting$ grep 'Java' Greptest.txt

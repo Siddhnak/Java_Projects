@@ -1,0 +1,24 @@
+
+
+#1. Search for the lines that have the word 'Java'
+
+Hello there!! how are you?
+
+Below is the list of technologies i have been 
+hello working on. 
+
+Baba is of no use..
+baba buba k paas mat jao
+
+Python 6 months of exp
+Shell scripting 3 months of exp
+Java 2 years of exp
+Spring Boot
+
+
+
+HA0393
+HE4323
+ED2232
+
+End of the Script here
