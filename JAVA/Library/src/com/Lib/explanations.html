@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<p>
+    no no you were correct tell me where it was used twice
+   GPT: I'm sorry for the confusion. I misunderstood your question. Upon reviewing your code again, I see that you're using <code>itr.next()</code> twice in this section:</p>
+<pre dir="ltr" class="w-full"><div class="bg-black mb-4 rounded-md"><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-lua"><span class="hljs-keyword">while</span> (itr.hasNext()) {
+   Book book = itr.<span class="hljs-built_in">next</span>();
+   System.out.println(itr.<span class="hljs-built_in">next</span>());
+}
+</code></div></div></pre>
+<p>In the loop, you're calling <code>itr.next()</code> twice. This means that you're advancing the iterator by two elements in each iteration. This could lead to skipping every alternate book in the list.</p>
+<p>You should only call <code>itr.next()</code> once and store it in a variable if you want to use the value:</p>
+<pre dir="ltr" class="w-full"><div class="bg-black mb-4 rounded-md"><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-csharp"><span class="hljs-keyword">while</span> (itr.hasNext()) {
+   Book book = itr.next();
+   System.<span class="hljs-keyword">out</span>.println(book);
+}
+</code></div></div></pre>
+<p>This way, you're using the same <code>Book</code> object that you retrieved from the iterator. Thank you for catching this mistake, and I apologize for any confusion caused by my previous response</p>
+<p>
+
+<!--there you go-->
+<!--package com.Lib;-->
+
+<!--import java.util.ArrayList;-->
+<!--import java.util.List;-->
+
+<!--public class Libraryapp extends Book {-->
+
+
+<!--private static List<Book> books = new ArrayList<>(); //List to store the books added as Generic-->
+
+<!--    public Libraryapp(int id, int qty, String name, String author, String publisher, String genre) {-->
+<!--    super(id, qty, name, author, publisher, genre);-->
+<!--    books = new ArrayList<>(); //Inititalizing the list-->
+<!--    //Just Want to change the commit here-->
+<!--    }-->
+<!--    //FOLLOwing code highlight the incorrect usage of book object-->
+
+
+<!--    public void addBook(Book book) {-->
+<!--    books.add(book);-->
+
+<!--    }-->
+
+<!--    public static void main(String[] args) {-->
+
+<!--    //       Libraryapp libraryapp = new Libraryapp(1,2,"how to Pass any Test?",-->
+<!--    //           "Meandyou","blah","Education"); // Creating an instance of the Library app..-->
+<!--    addBook book1 = new Book(1,2,"Think like me","Jerry",-->
+<!--    "Muahpublishers","Education");-->
+<!--    addBook book2 = new Book(2,1,"Hola hoops","Bablya",-->
+<!--    "Muahpublishers","Education");-->
+<!--    addBook book3 = new Book(3,3,"Thinkdigit","Tommy",-->
+<!--    "Meowpublishers","Education");-->
+<!--    addBook book4 = new Book(4,2,"Why i like gaming","Harry",-->
+<!--    "Darkgamers","Fun");-->
+
+
+<!--    for(Book x: books){-->
+<!--    System.out.println("Book ID: "+book1.getId()+ "Book Name: "+book1.getName());-->
+<!--    System.out.println("Book ID: "+book2.getId()+ "Book Name: "+book2.getName());-->
+<!--    System.out.println("Book ID: "+book3.getId()+ "Book Name: "+book3.getName());-->
+<!--    System.out.println("Book ID: "+book4.getId()+ "Book Name: "+book4.getName());-->
+<!--    }-->
+<!--    }-->
+
+<!--    //-->
+<!--    //        Iterator<Book> itr = books.iterator();-->
+<!--        ////-->
+<!--        //        while (itr.hasNext()) {-->
+<!--        //           Book book = itr.next();-->
+<!--        //            System.out.println(itr.next());-->
+<!--        ////-->
+<!--        //        }-->
+<!--        //-->
+<!--        //    }-->
+<!--        //-->
+
+
+<!--        }-->
+        </p>
+<p>I've noticed a few issues in your code below
+
+    . Let me point them out:</p>
+
+<ol>
+    <li>
+        <p><strong>Static vs. Non-Static</strong>: <code>addBook</code> is a non-static method, but you're calling it in a static context in your <code>main</code> method. You should either make <code>addBook</code> static or create an instance of <code>Libraryapp</code> to call it.</p>
+    </li>
+    <li>
+        <p><strong>Incorrect Printing</strong>: In your loop, you're always printing the details of <code>book1</code>, <code>book2</code>, <code>book3</code>, and <code>book4</code>. Instead, you should be printing the details of the books in the list.</p>
+    </li>
+</ol>
+<p>Here's the corrected code:</p>
+<pre dir="ltr" class="w-full"><div class="bg-black mb-4 rounded-md"><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-java"><span class="hljs-keyword">package</span> com.Lib;
+
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Libraryapp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Book</span> {
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;Book&gt; books = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(); <span class="hljs-comment">//List to store the books added as Generic</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Libraryapp</span><span class="hljs-params">(<span class="hljs-type">int</span> id, <span class="hljs-type">int</span> qty, String name, String author, String publisher, String genre)</span> {
+        <span class="hljs-built_in">super</span>(id, qty, name, author, publisher, genre);
+        <span class="hljs-comment">// No need to initialize 'books' here</span>
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addBook</span><span class="hljs-params">(Book book)</span> {
+        books.add(book);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">Libraryapp</span> <span class="hljs-variable">libraryapp</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Libraryapp</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">"how to Pass any Test?"</span>,
+                <span class="hljs-string">"Meandyou"</span>,<span class="hljs-string">"blah"</span>,<span class="hljs-string">"Education"</span>);
+
+        <span class="hljs-type">Book</span> <span class="hljs-variable">book1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Book</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">"Think like me"</span>,<span class="hljs-string">"Jerry"</span>,
+                <span class="hljs-string">"Muahpublishers"</span>,<span class="hljs-string">"Education"</span>);
+        <span class="hljs-type">Book</span> <span class="hljs-variable">book2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Book</span>(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-string">"Hola hoops"</span>,<span class="hljs-string">"Bablya"</span>,
+                <span class="hljs-string">"Muahpublishers"</span>,<span class="hljs-string">"Education"</span>);
+        <span class="hljs-type">Book</span> <span class="hljs-variable">book3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Book</span>(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-string">"Thinkdigit"</span>,<span class="hljs-string">"Tommy"</span>,
+                <span class="hljs-string">"Meowpublishers"</span>,<span class="hljs-string">"Education"</span>);
+        <span class="hljs-type">Book</span> <span class="hljs-variable">book4</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Book</span>(<span class="hljs-number">4</span>,<span class="hljs-number">2</span>,<span class="hljs-string">"Why i like gaming"</span>,<span class="hljs-string">"Harry"</span>,
+                <span class="hljs-string">"Darkgamers"</span>,<span class="hljs-string">"Fun"</span>);
+
+        libraryapp.addBook(book1);
+        libraryapp.addBook(book2);
+        libraryapp.addBook(book3);
+        libraryapp.addBook(book4);
+
+        <span class="hljs-keyword">for</span>(Book book : books){
+            System.out.println(<span class="hljs-string">"Book ID: "</span> + book.getId() + <span class="hljs-string">", Book Name: "</span> + book.getName());
+        }
+    }
+}
+</code></div></div></pre>
+<p>This should now correctly print the details of the books in the list</p>
+
+</body>
+</html>
