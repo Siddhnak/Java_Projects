@@ -23,7 +23,8 @@ Well, we can get a User object from this Optional User by using get method.
 get() method returns a User*/
     @Override
     public User getUserById(Long userId) {
-
+        Optional<User> optionalUser = userRepository.findById(userId);
+//        return optionalUser.get();  //it was null here
         return null;
     }
 }
