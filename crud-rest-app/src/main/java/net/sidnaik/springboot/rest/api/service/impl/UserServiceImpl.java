@@ -24,7 +24,7 @@ get() method returns a User*/
     @Override
     public User getUserById(Long userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
-//        return optionalUser.get();  //it was null here
-        return null;
+        return optionalUser.get();  //it was null here
+//        return null;
     }
 }
