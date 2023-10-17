@@ -1,2 +1,4 @@
-package Java8;public class OptionalClass {
+package Java8;
+
+public class OptionalClass {
 }

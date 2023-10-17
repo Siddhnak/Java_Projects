@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Certainly! Let's compare the Java 7 approach with the Java 8 approach using code examples.</p>
+<p><strong>Java 7 Approach:</strong></p>
+<pre dir="ltr" class="w-full"><div class="bg-black mb-4 rounded-md"><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-typescript"><span class="hljs-comment">// Interface defining the activity</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">MakeBeverage</span> {
+    <span class="hljs-built_in">void</span> <span class="hljs-title function_">make</span>();
+}
+
+<span class="hljs-comment">// Class implementing the interface</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MakeCoffee</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">MakeBeverage</span> {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">make</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-title class_">System</span>.<span class="hljs-property">out</span>.<span class="hljs-title function_">println</span>(<span class="hljs-string">"Making Coffee"</span>);
+    }
+}
+
+<span class="hljs-comment">// Class implementing the interface</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MakeTea</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">MakeBeverage</span> {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">make</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-title class_">System</span>.<span class="hljs-property">out</span>.<span class="hljs-title function_">println</span>(<span class="hljs-string">"Making Tea"</span>);
+    }
+}
+
+<span class="hljs-comment">// Executor class</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BeverageMaker</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">makeBeverage</span>(<span class="hljs-params">MakeBeverage makeBeverage</span>) {
+        makeBeverage.<span class="hljs-title function_">make</span>();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>) {
+        <span class="hljs-title class_">BeverageMaker</span> beverageMaker = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BeverageMaker</span>();
+        <span class="hljs-title class_">MakeCoffee</span> makeCoffee = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MakeCoffee</span>();
+        <span class="hljs-title class_">MakeTea</span> makeTea = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MakeTea</span>();
+        beverageMaker.<span class="hljs-title function_">makeBeverage</span>(makeCoffee);
+        beverageMaker.<span class="hljs-title function_">makeBeverage</span>(makeTea);
+    }
+}
+</code></div></div></pre>
+<p><strong>Java 8 Approach:</strong></p>
+<pre dir="ltr" class="w-full"><div class="bg-black mb-4 rounded-md"><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-csharp"><span class="hljs-comment">// Interface defining the activity</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title">MakeBeverage</span> {
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">make</span>()</span>;
+}
+
+<span class="hljs-comment">// Executor class using lambda expressions</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title">BeverageMakerWithLambda</span> {
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">makeBeverage</span>(<span class="hljs-params">MakeBeverage makeBeverage</span>)</span> {
+        makeBeverage.make();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span>(<span class="hljs-params">String[] args</span>)</span> {
+        BeverageMakerWithLambda beverageMakerWithLambda = <span class="hljs-keyword">new</span> BeverageMakerWithLambda();
+
+        <span class="hljs-comment">// Using lambda expression to define behavior</span>
+        MakeBeverage action = () -&gt; System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">"Make whatever beverage you want!"</span>);
+
+        <span class="hljs-comment">// Passing the behavior directly</span>
+        beverageMakerWithLambda.makeBeverage(action);
+    }
+}
+</code></div></div></pre>
+<p><strong>Comparison:</strong></p>
+<p><em>Java 7 Approach:</em></p>
+<ul>
+  <li>More traditional approach.</li>
+  <li>Separate classes (<code>MakeCoffee</code> and <code>MakeTea</code>) are created for different beverage-making methods.</li>
+  <li>Each class represents a different way of making a beverage.</li>
+</ul>
+<p><em>Java 8 Approach:</em></p>
+<ul>
+  <li>Utilizes lambda expressions for more concise code.</li>
+  <li>No need to create separate classes for different beverage-making methods.</li>
+  <li>The behavior is defined directly in the <code>main</code> method using lambda expressions.</li>
+</ul>
+<p>In summary, the Java 8 approach leverages lambda expressions to directly express the behavior of making a beverage, leading to more concise and expressive code. It eliminates the need for creating separate classes for different methods. This approach is particularly beneficial when you want to pass behavior as parameters or store them in variables</p>
+</body>
+</html>

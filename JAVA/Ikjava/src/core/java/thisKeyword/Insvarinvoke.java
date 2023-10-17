@@ -1,4 +1,4 @@
-package core.java;
+package core.java.thisKeyword;
 
 // Just read this class and you will automatically answer all the this keyword
 // related questions

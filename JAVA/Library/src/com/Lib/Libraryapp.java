@@ -16,9 +16,6 @@ public class Libraryapp extends Book {
     }
 //FOLLOwing code highlight the incorrect usages and so much to learn
 // of book objects and where to call what
-
-
-
     /*Issue 01 :  is a non-static method, but you're calling it in a static context
      in your main method. You should either make addBook static
      OR

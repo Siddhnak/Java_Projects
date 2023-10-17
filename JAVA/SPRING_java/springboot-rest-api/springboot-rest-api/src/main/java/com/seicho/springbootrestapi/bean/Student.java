@@ -19,6 +19,18 @@ public class Student{ //First step of java bean creation
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        //Doll example
+
+        /*Absolutely! That's a great way to put it.
+
+In this analogy:
+
+- The doll's outfits and accessories are like the variables in a Java class. These are the pieces of data that you want to manage and control.
+
+- The magic wand is like the constructor. It's the special tool you use to create a new doll and set it up with the initial outfits and accessories.
+
+So, just as you use the magic wand to create a new doll and give it its starting look, in Java,
+you use the constructor to create a new object and set it up with its initial values. Great analogy!*/
 
     /*Parametrized constructors are required to pass parameters on creation of
     objects.We can overload constructors with different datatypes as its parameters.
