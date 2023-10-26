@@ -20,7 +20,7 @@ public class Cw2totvowcon {
 
         for(char x:s1char ){
 //            if (Chars.contains()
-            if (vow.indexOf(x) != -1) {
+            if (vow.indexOf(x) != -1) { //kind of imp to understand
                 cvow++;}
             else if (cons.indexOf(x) != -1) {
                 ccon++;
