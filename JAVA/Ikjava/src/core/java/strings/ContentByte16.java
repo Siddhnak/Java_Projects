@@ -18,6 +18,6 @@ public class ContentByte16 {
             System.out.println("\nThe new String equals " +
                     new_str + "\n");
         }
-dss
+
 
 }
