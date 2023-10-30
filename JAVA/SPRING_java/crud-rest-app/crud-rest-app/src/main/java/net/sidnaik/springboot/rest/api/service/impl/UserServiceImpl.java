@@ -19,10 +19,11 @@ public class UserServiceImpl implements UserService {
     public UserDto createUser(UserDto userDto) {
 
         //Convert UserDto to User JPA Entity
+
          User user = new User(                  //Creating inst of user JPA
                  userDto.getId(),
-                 userDto.getFirstname(),
-                 userDto.getLastname(),
+                 userDto.getFirstName(),
+                 userDto.getLastName(),
                  userDto.getEmail()
          );
          User savedUser=userRepository.save(user);
