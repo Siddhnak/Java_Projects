@@ -3,6 +3,7 @@ package net.sidnaik.springboot.rest.api.service.impl;
 import lombok.AllArgsConstructor;
 import net.sidnaik.springboot.rest.api.dto.UserDto;
 import net.sidnaik.springboot.rest.api.entity.User;
+import net.sidnaik.springboot.rest.api.mapper.UserMapper;
 import net.sidnaik.springboot.rest.api.repository.UserRepository;
 import net.sidnaik.springboot.rest.api.service.UserService;
 import org.springframework.stereotype.Service;
@@ -20,22 +21,14 @@ public class UserServiceImpl implements UserService {
 
         //Convert UserDto to User JPA Entity
 
-         User user = new User(                  //Creating inst of user JPA
-                 userDto.getId(),
-                 userDto.getFirstName(),
-                 userDto.getLastName(),
-                 userDto.getEmail()
-         );
+         User user = UserMapper.mapToUser(userDto);         //feels nice
+
          User savedUser=userRepository.save(user);
 
          //Converting User JPA entity to UserDto
 
-        UserDto savedUserDto = new UserDto(
-                savedUser.getId(),
-                savedUser.getFirstName(),
-                savedUser.getLastName(),
-                savedUser.getEmail()
-        );
+        UserDto savedUserDto = UserMapper.mapToUserDto(user);       //feels nice
+
         return savedUserDto;
     }
 
