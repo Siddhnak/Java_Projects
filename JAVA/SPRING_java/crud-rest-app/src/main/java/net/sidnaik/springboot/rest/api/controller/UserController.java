@@ -2,6 +2,7 @@ package net.sidnaik.springboot.rest.api.controller;
 
 
 import lombok.AllArgsConstructor;
+import net.sidnaik.springboot.rest.api.dto.UserDto;
 import net.sidnaik.springboot.rest.api.entity.User;
 import net.sidnaik.springboot.rest.api.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,8 @@ public class UserController {
 
     //building the user Rest Api
     @PostMapping
-public ResponseEntity<User> createUser(@RequestBody User user){   //re see whats object and ref with miss |saw.. it's DI only (RE)
-User savedUser = userService.createUser(user);           // UserService object which has a createUser method
+public ResponseEntity<UserDto> createUser(@RequestBody UserDto user){   //re see whats object and ref with miss |saw.. it's DI only (RE)
+UserDto savedUser = userService.createUser(user);           // UserService object which has a createUser method
 return  new ResponseEntity<>(savedUser, HttpStatus.CREATED);
 }
 //build get user by id REST API

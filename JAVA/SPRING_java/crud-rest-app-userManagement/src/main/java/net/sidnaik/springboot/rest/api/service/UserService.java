@@ -1,13 +1,12 @@
 package net.sidnaik.springboot.rest.api.service;
 
-import net.sidnaik.springboot.rest.api.dto.UserDto;
 import net.sidnaik.springboot.rest.api.entity.User;
 
 import java.util.List;
 
 
 public interface UserService {
-UserDto createUser(UserDto user);   //can't have a BODY..
+User createUser(User user);   //can't have a BODY..
 
     /*Let's remove the null as we want to get something now
         Well, we can get a User object from this Optional User by using get method.
