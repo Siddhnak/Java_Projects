@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -36,20 +37,23 @@ public class UserServiceImpl implements UserService {
 Well, we can get a User object from this Optional User by using get method.
 get() method returns a User*/
     @Override
-    public User getUserById(Long userId) {
+    public UserDto getUserById(Long userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
-        return optionalUser.get();  //it was null here
+        User user = optionalUser.get();
+        return UserMapper.mapToUserDto(user);
 //        return null;
     }
     // L65 GetAllUsers rest API
     @Override
-    public List<User> getAlluser() /* will get all users from the DB*/ {
-        return userRepository.findAll();
+    public List<UserDto> getAlluser() /* will get all users from the DB*/ {
+        List<User> users= userRepository.findAll();
+        return users.stream().map(UserMapper::mapToUserDto).collect(Collectors.toList());           //converting this list of User JPA entity into a list of UserDto
+    /*we need to convert a list of User entity into list of UserDto*/
     }
 
     @Override
 
-    public User updateUser(User user) {
+    public UserDto updateUser(UserDto user) {
         /*Well, let's first get the existing User
          object from the database and then we'll update that User object.*/
         User existingUser = userRepository.findById(user.getId()).get();
@@ -63,8 +67,8 @@ get() method returns a User*/
         existingUser.setLastName(user.getLastName());
         existingUser.setEmail(user.getEmail());
         userRepository.save(existingUser);
-        User updatedUser= userRepository.save(existingUser);
-        return updatedUser;
+        User updatedUser= userRepository.save(existingUser);        //So let's convert this User entity object into UserDto.
+        return UserMapper.mapToUserDto(updatedUser);
 
     }
 

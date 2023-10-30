@@ -27,8 +27,8 @@ return  new ResponseEntity<>(savedUser, HttpStatus.CREATED);
 //build get user by id REST API
     //http:localhost:8080/api/users/1
     @GetMapping("{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") Long userId){
-        User user=userService.getUserById(userId);
+    public ResponseEntity<UserDto> getUserById(@PathVariable("id") Long userId){
+        UserDto user=userService.getUserById(userId);
         return new ResponseEntity<>(user,HttpStatus.OK);
 
     }
@@ -36,17 +36,17 @@ return  new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     // L65 Building GetAllUsers rest API
     // http://localhost:8080/api/users
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers(){
-        List<User> users =userService.getAlluser();
+    public ResponseEntity<List<UserDto>> getAllUsers(){
+        List<UserDto> users =userService.getAlluser();
         return new ResponseEntity<>(users,HttpStatus.OK); //See what's and enum?
     }
 
     // L65 Building updateUsers rest API
     @PutMapping("{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") Long userId,
-                                           @RequestBody User user){
+    public ResponseEntity<UserDto> updateUser(@PathVariable("id") Long userId,
+                                           @RequestBody UserDto user){
         user.setId(userId);
-        User updatedUser =  userService.updateUser(user);
+        UserDto updatedUser =  userService.updateUser(user);
         return new ResponseEntity<>(updatedUser,HttpStatus.OK);
 
     }
