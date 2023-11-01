@@ -8,13 +8,17 @@ public class Cw3Replowtoup {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a string pls: ");
         String str = sc.next();
+        StringBuilder newStr=new StringBuilder();
 //        String Ustr=null;
         for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i)>='a'&& str.charAt(i)<='z'){
-                str.toUpperCase();
+            char ch = str.charAt(i);
+            if (ch>='a'&& ch<='z'){
+                newStr.append(Character.toUpperCase(ch));
+            }else{
+                newStr.append(ch);
             }
 
         }
-        System.out.println(str);
+        System.out.println(newStr);
     }
 }
