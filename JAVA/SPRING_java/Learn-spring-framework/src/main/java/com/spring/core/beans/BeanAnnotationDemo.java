@@ -40,9 +40,7 @@ class AppConfig{
     public Student student(){
         return new Student(address());
     }
-
 }
-
 public class BeanAnnotationDemo {
     public static void main(String[] args) {
 //        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class); //before try catch

@@ -14,13 +14,11 @@ public class Client {
 //        MessageSender messageSender = new MessageSender(emailService);
 //        messageSender.sendMessage(message);
 
-        ApplicationContext applicationContext =
-    new AnnotationConfigApplicationContext
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext
             (AppConfig.class);
 
         /*let us retrieve MessageSender spring bean from the ApplicationContext.*/
-        MessageSender messageSender =
-    applicationContext.getBean(MessageSender.class);
+        MessageSender messageSender = applicationContext.getBean(MessageSender.class);
         messageSender.sendMessage(message);
     }
 }
