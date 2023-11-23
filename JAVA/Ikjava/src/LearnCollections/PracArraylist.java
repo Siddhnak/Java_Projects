@@ -2,6 +2,7 @@ package LearnCollections;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.ListIterator;
 
 //      BEST    to      REVISE      ARRAYLIST   *******lOOK no FURTHER*********
@@ -19,9 +20,9 @@ public class PracArraylist {
 //        System.out.println(color); //simple print in array format
 
 //Using iterator
-//        Iterator itr= color.iterator(); //getting the iterator
-//        while (itr.hasNext()){ //check if iterator has elements
-//            System.out.println(itr.next()); //Printing and moving next
+        Iterator itr= color.iterator(); //getting the iterator
+        while (itr.hasNext()){ //check if iterator has elements
+            System.out.println(itr.next()); //Printing and moving next
 
 
 //USing simple for-each loop
@@ -74,4 +75,4 @@ public class PracArraylist {
 //                          User-defined class objects in Java ArrayList
 
     }
-}
+}}
