@@ -29,3 +29,16 @@ public class LeftT {
     }
 
 }
+
+/*
+
+Desired Output..
+    *
+   **
+  ***
+ ****
+*****
+
+*/
+
+
