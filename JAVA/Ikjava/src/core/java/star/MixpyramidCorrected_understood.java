@@ -6,7 +6,8 @@ public class MixpyramidCorrected_understood {
         }
 
         static void pattern(int n) {
-            for (int row = 1; row <= 2 * n; row++) {  // normal row controlling loop
+         //have kept the logic damn simple..
+            for (int row = 1; row <= 2 * n-1; row++) {  // normal row controlling loop
 //                int maxCols = (row <= n) ? row : 2 * n - row;
                 int maxCols = row >n ? 2 * n - row:row;  // 1 Using ternary  2 getting the formulae  3 had no idea this has to be placed post first for-loop and learned now from Kunal Q5 pattern..
                 for (int col = 1; col <= maxCols; col++) {
