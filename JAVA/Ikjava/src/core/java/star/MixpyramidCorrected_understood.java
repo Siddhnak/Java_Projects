@@ -18,3 +18,21 @@ public class MixpyramidCorrected_understood {
         }
 
 }
+
+/*
+
+Desired Output..
+*
+**
+***
+****
+*****
+****
+***
+**
+*
+
+Process finished with exit code 0
+
+
+*/

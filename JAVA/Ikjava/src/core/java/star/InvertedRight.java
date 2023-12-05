@@ -18,3 +18,14 @@ public class InvertedRight {
         Pattern(5);
     }
 }
+
+/*
+
+Desired Output..
+*****
+****
+***
+**
+*
+
+*/

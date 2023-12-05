@@ -24,3 +24,14 @@ public class InvRigh {
     }
 }
 
+/*
+
+Desired OP
+*****
+****
+***
+**
+*
+
+
+*/
