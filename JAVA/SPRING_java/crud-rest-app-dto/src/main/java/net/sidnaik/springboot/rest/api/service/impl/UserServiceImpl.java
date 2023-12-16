@@ -6,6 +6,7 @@ import net.sidnaik.springboot.rest.api.entity.User;
 import net.sidnaik.springboot.rest.api.mapper.UserMapper;
 import net.sidnaik.springboot.rest.api.repository.UserRepository;
 import net.sidnaik.springboot.rest.api.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,19 +18,19 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository; //creating a repository of userRepository
+
+   private ModelMapper modelMapper;
     @Override
     public UserDto createUser(UserDto userDto) {
 
         //Convert UserDto to User JPA Entity
-
-         User user = UserMapper.mapToUser(userDto);         //feels nice
-
-         User savedUser=userRepository.save(user);
+//      User user = UserMapper.mapToUser(userDto);         //feels nice
+        User user =  modelMapper.map(userDto,User.class) ;     //using model mapper
+        User savedUser=userRepository.save(user);
 
          //Converting User JPA entity to UserDto
-
-        UserDto savedUserDto = UserMapper.mapToUserDto(user);       //feels nice
-
+//        UserDto savedUserDto = UserMapper.mapToUserDto(user);       //feels nice
+        UserDto savedUserDto = modelMapper.map(savedUser,UserDto.class);    // using modelmapper refactoring
         return savedUserDto;
     }
 
@@ -40,16 +41,23 @@ get() method returns a User*/
     public UserDto getUserById(Long userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
         User user = optionalUser.get();
-        return UserMapper.mapToUserDto(user);
+//        return UserMapper.mapToUserDto(user);
+        return modelMapper.map(user,UserDto.class);  //TO map modelmapper to map User entity into UserDto
 //        return null;
     }
     // L65 GetAllUsers rest API
     @Override
     public List<UserDto> getAlluser() /* will get all users from the DB*/ {
         List<User> users= userRepository.findAll();
-        return users.stream().map(UserMapper::mapToUserDto).collect(Collectors.toList());           //converting this list of User JPA entity into a list of UserDto
-    /*we need to convert a list of User entity into list of UserDto*/
-    }
+//        return users.stream().map(UserMapper::mapToUserDto)
+//                .collect(Collectors.toList());
+        //converting this list of User JPA entity into a list of UserDto
+        /*we need to convert a list of User entity into list of UserDto*/
+
+        //Model mapper below..for   GET ALL USERS..
+        return users.stream().map((user ->modelMapper.map(user,UserDto.class) ))                                 //map method takes function as a functional interface
+                .collect(Collectors.toList());
+    }   //passing of the lambda expression as map method takes function as the Functional arg
 
     @Override
 
@@ -68,7 +76,9 @@ get() method returns a User*/
         existingUser.setEmail(user.getEmail());
         userRepository.save(existingUser);
         User updatedUser= userRepository.save(existingUser);        //So let's convert this User entity object into UserDto.
-        return UserMapper.mapToUserDto(updatedUser);
+//        return UserMapper.mapToUserDto(updatedUser);
+        return modelMapper.map(updatedUser,UserDto.class);   //ModelMapper refactor
+
 
     }
 
