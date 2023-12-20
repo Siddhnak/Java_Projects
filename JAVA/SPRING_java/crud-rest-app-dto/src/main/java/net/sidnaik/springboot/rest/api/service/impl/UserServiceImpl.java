@@ -3,6 +3,7 @@ package net.sidnaik.springboot.rest.api.service.impl;
 import lombok.AllArgsConstructor;
 import net.sidnaik.springboot.rest.api.dto.UserDto;
 import net.sidnaik.springboot.rest.api.entity.User;
+import net.sidnaik.springboot.rest.api.mapper.AutoUserMapper;
 import net.sidnaik.springboot.rest.api.mapper.UserMapper;
 import net.sidnaik.springboot.rest.api.repository.UserRepository;
 import net.sidnaik.springboot.rest.api.service.UserService;
@@ -25,12 +26,19 @@ public class UserServiceImpl implements UserService {
 
         //Convert UserDto to User JPA Entity
 //      User user = UserMapper.mapToUser(userDto);         //feels nice
-        User user =  modelMapper.map(userDto,User.class) ;     //using model mapper
+//        User user =  modelMapper.map(userDto,User.class) ;     //using model mapper
+
+
+        User user =  AutoUserMapper.MAPPER.mapToUser(userDto);    //Just using our Mapper class
+
         User savedUser=userRepository.save(user);
 
          //Converting User JPA entity to UserDto
 //        UserDto savedUserDto = UserMapper.mapToUserDto(user);       //feels nice
-        UserDto savedUserDto = modelMapper.map(savedUser,UserDto.class);    // using modelmapper refactoring
+//        UserDto savedUserDto = modelMapper.map(savedUser,UserDto.class);    // using modelmapper refactoring
+
+        UserDto savedUserDto = AutoUserMapper.MAPPER.mapToUserDto(savedUser);
+
         return savedUserDto;
     }
 
@@ -42,8 +50,10 @@ get() method returns a User*/
         Optional<User> optionalUser = userRepository.findById(userId);
         User user = optionalUser.get();
 //        return UserMapper.mapToUserDto(user);
-        return modelMapper.map(user,UserDto.class);  //TO map modelmapper to map User entity into UserDto
+//        return modelMapper.map(user,UserDto.class);  //TO map modelmapper to map User entity into UserDto
 //        return null;
+
+        return AutoUserMapper.MAPPER.mapToUserDto(optionalUser.get());
     }
     // L65 GetAllUsers rest API
     @Override
@@ -55,8 +65,12 @@ get() method returns a User*/
         /*we need to convert a list of User entity into list of UserDto*/
 
         //Model mapper below..for   GET ALL USERS..
-        return users.stream().map((user ->modelMapper.map(user,UserDto.class) ))                                 //map method takes function as a functional interface
+//        return users.stream().map((user ->modelMapper.map(user,UserDto.class) ))                                 //map method takes function as a functional interface
+//                .collect(Collectors.toList());
+
+        return users.stream().map((user ->AutoUserMapper.MAPPER.mapToUserDto(user) ))                                 //map method takes function as a functional interface
                 .collect(Collectors.toList());
+
     }   //passing of the lambda expression as map method takes function as the Functional arg
 
     @Override
@@ -77,7 +91,9 @@ get() method returns a User*/
         userRepository.save(existingUser);
         User updatedUser= userRepository.save(existingUser);        //So let's convert this User entity object into UserDto.
 //        return UserMapper.mapToUserDto(updatedUser);
-        return modelMapper.map(updatedUser,UserDto.class);   //ModelMapper refactor
+//        return modelMapper.map(updatedUser,UserDto.class);   //ModelMapper refactor
+
+        return AutoUserMapper.MAPPER.mapToUserDto(updatedUser);   //ModelMapper refactor
 
 
     }
