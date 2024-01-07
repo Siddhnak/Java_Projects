@@ -3,6 +3,7 @@ package net.sidnaik.springboot.rest.api.service.impl;
 import lombok.AllArgsConstructor;
 import net.sidnaik.springboot.rest.api.dto.UserDto;
 import net.sidnaik.springboot.rest.api.entity.User;
+import net.sidnaik.springboot.rest.api.exception.EmailAlreadyExistsException;
 import net.sidnaik.springboot.rest.api.exception.ResNotFoundException;
 import net.sidnaik.springboot.rest.api.mapper.AutoUserMapper;
 import net.sidnaik.springboot.rest.api.mapper.UserMapper;
@@ -11,6 +12,7 @@ import net.sidnaik.springboot.rest.api.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.ExemptionMechanismException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,6 +26,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto createUser(UserDto userDto) {//Convert UserDto to User JPA Entity User user =
+
+Optional<User> optionalUser = userRepository.findByEmail(userDto.getEmail());
+
+if(optionalUser.isPresent()){
+throw new EmailAlreadyExistsException("Email Already exists SIR..");
+
+}
+
 //      UserMapper.mapToUser(userDto);         //feels nice
 //        User user =  modelMapper.map(userDto,User.class) ;     //using model mapper
         User user = AutoUserMapper.MAPPER.mapToUser(userDto);    //Just using our Mapper class
