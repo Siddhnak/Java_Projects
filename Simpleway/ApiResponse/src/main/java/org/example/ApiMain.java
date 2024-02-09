@@ -9,10 +9,10 @@ import java.net.http.HttpResponse;
 public class ApiMain {
     public static void main(String[] args) throws IOException,InterruptedException {
 //        System.out.println("Hello world!");
-        var url = "https://omgvamp-hearthstone-v1.p.rapidapi.com/info";
+        var url = "https://10000-anime-quotes-with-pagination-support.p.rapidapi.com/rapidHandler/recent?page=1";
 
-        var apiKey = "a290790msh9a4ea61fe1415a4p156219jsn28931168f676";
-        var apihost= "omgvamp-hearthstone-v1.p.rapidapi.com";
+        var apiKey = "9761670b10mshd8693f6267fdc2fp1b5431jsn22677adde97d";
+        var apihost= "10000-anime-quotes-with-pagination-support.p.rapidapi.com";
         //httprequest
         var request = HttpRequest.newBuilder()
                 .GET()
