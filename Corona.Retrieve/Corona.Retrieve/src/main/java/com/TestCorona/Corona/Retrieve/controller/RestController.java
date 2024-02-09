@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 //Entry point
 
-@RequestMapping("/covid")
+@RequestMapping("/hearthstone")
 @org.springframework.web.bind.annotation.RestController
 @RequiredArgsConstructor //so that Getmapping will be always mapped
 public class RestController {
     private final CovidService covidService; //calling the service
-    @GetMapping("/get-all-country-covid-data")
+    @GetMapping("/get-cards")
     public ResponseEntity<?> callRapidEndpointToGetData(){
 return ResponseEntity.ok(covidService.getAllCountryData());
     }
