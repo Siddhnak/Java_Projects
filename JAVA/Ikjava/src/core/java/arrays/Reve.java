@@ -1,4 +1,4 @@
-package Allboutarrays;
+package core.java.arrays;
 
 public class Reve {
     public static void main(String[] args) {

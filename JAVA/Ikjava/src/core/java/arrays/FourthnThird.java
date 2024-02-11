@@ -42,8 +42,6 @@ public class FourthnThird {
 //                max4=max3
                     max3=a[i];
                 }
-
-
             }
 //            sum+=a[i];
             System.out.println("Fourthmax is " + max4);

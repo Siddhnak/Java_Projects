@@ -1,4 +1,4 @@
-package Allboutarrays;
+package core.java.arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;

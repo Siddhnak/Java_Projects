@@ -1,4 +1,4 @@
-package Allboutarrays;
+package core.java.arrays;
 
 public class Oned {
 
