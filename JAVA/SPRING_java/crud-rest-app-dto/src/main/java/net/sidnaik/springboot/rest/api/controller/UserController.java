@@ -1,6 +1,7 @@
 package net.sidnaik.springboot.rest.api.controller;
 
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import net.sidnaik.springboot.rest.api.dto.UserDto;
 import net.sidnaik.springboot.rest.api.exception.ErrorDetails;
@@ -26,7 +27,7 @@ public class UserController {
 
     //building the user Rest Api
     @PostMapping
-public ResponseEntity<UserDto> createUser(@RequestBody UserDto user){   //re see whats object and ref with miss |saw.. it's DI only (RE)
+public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto user){   //re see whats object and ref with miss |saw.. it's DI only (RE)
 UserDto savedUser = userService.createUser(user);           // UserService object which has a createUser method
 return  new ResponseEntity<>(savedUser, HttpStatus.CREATED);
 }
@@ -50,7 +51,7 @@ return  new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     // L65 Building updateUsers rest API
     @PutMapping("{id}")
     public ResponseEntity<UserDto> updateUser(@PathVariable("id") Long userId,
-                                           @RequestBody UserDto user){
+                                           @RequestBody @Valid UserDto user){
         user.setId(userId);
         UserDto updatedUser =  userService.updateUser(user);
         return new ResponseEntity<>(updatedUser,HttpStatus.OK);
