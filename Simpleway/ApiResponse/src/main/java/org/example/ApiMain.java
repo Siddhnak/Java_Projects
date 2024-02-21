@@ -23,16 +23,20 @@ public class ApiMain {
 
 
 
-        var url = "http://localhost:8083/Imaging/sourcecode/api%7Blocalhost%7D/%7Bcanvas_insights_local%7D/sourcefragments/%7B2295767%7D";
-
-        var apiKey = "Wxmg4KN8.5CEVJ8kq6BDTjvqyJXkGPC4MCBWSwA8p";
+//        var url = "http://localhost:8083/Imaging/sourcecode/api%7Blocalhost%7D/%7Bcanvas_insights_local%7D/sourcefragments/%7B2295767%7D";
+        var url = "http://localhost:8083/imaging/sourcecode/api/localhost/canvas_insights_local/sourcefragments/2295767?extendUp=25&extendDown=25";
+        var apiKey = "c2bqFaPW.Sio39hOJFFqWEfdok819jOxKLsfhISUK";
 //        var apihost= "10000-anime-quotes-with-pagination-support.p.rapidapi.com";
+        var appName="Canvas_Insights";
+        var domainName="default";
 
         //httprequest
         var request = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(url))
-                .header("X-RapidAPI-Key",apiKey)
+                .header("X-api-key",apiKey)
+                .header("app-name",appName)
+                .header("domain-name",domainName)
 //                .header("X-RapidAPI-Host",apihost)
                 .build();
 
