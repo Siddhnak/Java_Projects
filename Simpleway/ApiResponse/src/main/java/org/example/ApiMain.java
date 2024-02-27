@@ -1,5 +1,8 @@
 package org.example;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
@@ -25,7 +28,7 @@ public class ApiMain {
 
 //        var url = "http://localhost:8083/Imaging/sourcecode/api%7Blocalhost%7D/%7Bcanvas_insights_local%7D/sourcefragments/%7B2295767%7D";
         var url = "http://localhost:8083/imaging/sourcecode/api/localhost/canvas_insights_local/sourcefragments/2295767?extendUp=25&extendDown=25";
-        var apiKey = "c2bqFaPW.Sio39hOJFFqWEfdok819jOxKLsfhISUK";
+        var apiKey = "7KyzPPhK.stKaWlmIdgz0bjtDgHvvoirqG4fk2Jhg";
 //        var apihost= "10000-anime-quotes-with-pagination-support.p.rapidapi.com";
         var appName="Canvas_Insights";
         var domainName="default";
@@ -44,8 +47,19 @@ public class ApiMain {
 
        var response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println(response.statusCode());
-        System.out.println(response.body());
+//        System.out.println(response.statusCode());
+//        System.out.println(response.body());
+
+        //Pretty look
+        if (response.statusCode() == 200) {
+            // Pretty print JSON response
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String prettyJsonResponse = gson.toJson(response.body());
+            System.out.println(prettyJsonResponse);
+        } else {
+            System.out.println("Request failed with status code: " + response.statusCode());
+        }
+
     }
 
 
