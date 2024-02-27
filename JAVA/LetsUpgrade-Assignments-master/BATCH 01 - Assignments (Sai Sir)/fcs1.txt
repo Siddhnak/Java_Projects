@@ -1,2 +1,0 @@
-Hey we are coding along Python Files 
-We are completing today File handling
