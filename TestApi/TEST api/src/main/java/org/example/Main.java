@@ -26,24 +26,25 @@ public class Main {
 
 
 //        var url = "http://localhost:8083/Imaging/sourcecode/api%7Blocalhost%7D/%7Bcanvas_insights_local%7D/sourcefragments/%7B2295767%7D";
-        var url = "https://corona-virus-world-and-india-data.p.rapidapi.com/api";
-        var apiKey = "1d0a290790msh9a4ea61fe1415a4p156219jsn28931168f676";
+//        var url = "https://pokeapi.co/api/v2/pokemon/ditto";
+        var url = "https://animechan.xyz/api/quotes";
+//        var apiKey = "9761670b10mshd8693f6267fdc2fp1b5431jsn22677adde97d";
 //        var apihost= "10000-anime-quotes-with-pagination-support.p.rapidapi.com";
-        var XRapidAPIHost="corona-virus-world-and-india-data.p.rapidapi.com";
+//        var XRapidAPIHost="movies-api14.p.rapidapi.com";
 //        var domainName="default";
 
         //httprequest
         var request = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(url))
-                .header("X-api-key",apiKey)
-                .header("X-RapidAPI-Host",XRapidAPIHost)
+//                .header("X-api-key",apiKey)
+//                .header("X-RapidAPI-Host",XRapidAPIHost)
 //                .header("domain-name",domainName)
 //                .header("X-RapidAPI-Host",apihost)
                 .build();
 
         var client = HttpClient.newBuilder().build();
-
+try{
         var response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
 //        System.out.println(response.statusCode());
@@ -68,4 +69,15 @@ public class Main {
         } else {
             System.out.println("Request failed with status code: " + response.statusCode());
         }
-}}
+    } catch (IOException | InterruptedException e) {
+        e.printStackTrace();
+    }
+
+
+}
+//    private  String formatJson(String prettyJsonResponse) {
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//        Object json = gson.fromJson(prettyJsonResponse, Object.class);
+//        return gson.toJson(json);
+//    }
+}
