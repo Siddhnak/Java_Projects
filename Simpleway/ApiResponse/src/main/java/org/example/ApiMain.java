@@ -2,6 +2,8 @@ package org.example;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -28,7 +30,7 @@ public class ApiMain {
 
 //        var url = "http://localhost:8083/Imaging/sourcecode/api%7Blocalhost%7D/%7Bcanvas_insights_local%7D/sourcefragments/%7B2295767%7D";
         var url = "http://localhost:8083/imaging/sourcecode/api/localhost/canvas_insights_local/sourcefragments/2295767?extendUp=25&extendDown=25";
-        var apiKey = "7KyzPPhK.stKaWlmIdgz0bjtDgHvvoirqG4fk2Jhg";
+        var apiKey = "VJtrxyA6.VRQqmvJw6byanQNFv0guXV01EJNH1wVm";
 //        var apihost= "10000-anime-quotes-with-pagination-support.p.rapidapi.com";
         var appName="Canvas_Insights";
         var domainName="default";
@@ -45,29 +47,33 @@ public class ApiMain {
 
         var client = HttpClient.newBuilder().build();
 
-       var response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        try {
+            var response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
 //        System.out.println(response.statusCode());
 //        System.out.println(response.body());
 
-        //Pretty look
-        if (response.statusCode() == 200) {
-            // Pretty print JSON response
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();// Creating the Gson object to deserialize
+            //Pretty look
+            if (response.statusCode() == 200) {
 
-//            String prettyJsonResponse = gson.toJson(response.body());
-//            System.out.println(prettyJsonResponse); //This gives array of json response rather than single json object
+                // Parse the JSON response
+                JsonArray jsonArray = JsonParser.parseString(response.body()).getAsJsonArray();
+                // Pretty print JSON response
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();// Creating the Gson object to deserialize
+
+            String prettyJsonResponse = gson.toJson(response.body());
+            System.out.println(prettyJsonResponse); //This gives array of json response rather than single json object
 
 //            so.. new logic goes below..
 
-            String[] prettyJsonArray = gson.fromJson(response.body(),String[].class);
+                String[] prettyJsonArray = gson.fromJson(response.body(), String[].class);
 //deserializing the JSON resp body to array of strings from JSON array
 
-            for(String json : prettyJsonArray){
-                System.out.println(gson.toJson(json));
+            } else {
+                System.out.println("Request failed with status code: " + response.statusCode());
             }
-        } else {
-            System.out.println("Request failed with status code: " + response.statusCode());
+        }catch(IOException | InterruptedException e){
+            e.printStackTrace();
         }
 
     }
