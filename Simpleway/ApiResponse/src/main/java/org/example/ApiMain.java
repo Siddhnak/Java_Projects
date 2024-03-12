@@ -61,14 +61,11 @@ public class ApiMain {
                 // Pretty print JSON response
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();// Creating the Gson object to deserialize
 
-            String prettyJsonResponse = gson.toJson(response.body());
+            String prettyJsonResponse = gson.toJson(jsonArray);
+
             System.out.println(prettyJsonResponse); //This gives array of json response rather than single json object
 
-//            so.. new logic goes below..
-
-                String[] prettyJsonArray = gson.fromJson(response.body(), String[].class);
-//deserializing the JSON resp body to array of strings from JSON array
-
+//
             } else {
                 System.out.println("Request failed with status code: " + response.statusCode());
             }
