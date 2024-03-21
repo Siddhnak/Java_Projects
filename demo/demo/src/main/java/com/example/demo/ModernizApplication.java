@@ -204,10 +204,10 @@ public class ModernizApplication {
 		int choice = -1;
 
 		do {
-			System.out.println("\n=====================\nWhat do you want?\n=====================\n" +
+			System.out.println("\n=====================\nWelcome to the Cast Imaging Apify Service\nWhat would you like to see\nPlease enter a number your choice.\n=====================\n" +
 					"1.Anime api \n2.Get Source Fragment Code details"
-					+ "\n3.Transaction Details\n4.Exit"
-					+ "\n5.Post Exit..");
+					+ "\n3.Transaction Details\n4.Transaction Objects(R&D progress)"
+					+ "\n5.Transaction List "+"\n6.Technology Details"+"\n7.Inventory Details"+"\n8.Database Structure"+"\n9.Database Table Details"+"\n10.Sole Transaction"+"\n11.Sole Object Details"+"\n");
 			choice = s.nextInt();
 			switch (choice) {
 				case 1:
@@ -227,16 +227,54 @@ public class ModernizApplication {
 					break;
 				case 6:
 					techDetails();
+					break;
 				case 7:
 					invDetails();
+					break;
 				case 8:
 					dbStruct();
+					break;
 				case 9:
 					dbTable();
+					break;
+				case 10:
+					soleTransactionlist();
+					break;
+				case 11:
+					soleTransactionobject();
+					break;
 				default:
 					System.out.println("INVALID CHOICE! ENTER AGAIN!");
 			}
 		} while (choice != 5);
+	}
+
+	private static void soleTransactionobject() {
+		String url = "http://localhost:8083/imaging/api/domains/default/apps/Appscribe/transaction/8830/level5/objects?external=1";
+		WebClient webClient = WebClient.builder()
+				.defaultHeaders(headers -> {
+					headers.add("accept", "application/json;charset=utf-8");
+//					headers.add("domain-name", "default");
+					headers.add("x-api-key", "8Svtl4Qi.xvSDLU0Bi7syc9OuO8Ep7ctQwGVnYQiZ");
+				})
+				.build();
+		String responseBody = fetchResponseBody(webClient, url);
+		printResponse(responseBody);
+
+	}
+
+	private static void soleTransactionlist() {
+//		http://localhost:8083/imaging/api/domains/default/apps/Appscribe/transaction/8830/level5/objects?external=1
+		String url = "http://localhost:8083/imaging/api/domains/default/apps/Canvas_Insights/transaction/list?offset=1&limit=2&search=a";
+		WebClient webClient = WebClient.builder()
+				.defaultHeaders(headers -> {
+					headers.add("accept", "application/json;charset=utf-8");
+//					headers.add("domain-name", "default");
+					headers.add("x-api-key", "8Svtl4Qi.xvSDLU0Bi7syc9OuO8Ep7ctQwGVnYQiZ");
+				})
+				.build();
+		String responseBody = fetchResponseBody(webClient, url);
+		printResponse(responseBody);
 	}
 
 	private static void dbStruct() {
