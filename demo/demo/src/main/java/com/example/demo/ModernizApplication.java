@@ -188,9 +188,7 @@
 
 package com.example.demo;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.*;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -198,17 +196,19 @@ import java.util.Scanner;
 
 @SpringBootApplication
 public class ModernizApplication {
-
+	private static Scanner scanner = new Scanner(System.in);
+	private static String transactionDetailsResponse;
 	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
+//		Scanner s = new Scanner(System.in);
 		int choice = -1;
 
 		do {
-			System.out.println("\n=====================\nWelcome to the Cast Imaging Apify Service\nWhat would you like to see\nPlease enter a number your choice.\n=====================\n" +
-					"1.Anime api \n2.Get Source Fragment Code details"
+			System.out.println("\n=====================\nWelcome to the Cast Imaging Apify Service\nWhat would you like to see?\nPlease enter a number your choice.\n=====================\n" +
+					"1.Ping TEST api \n2.Get Source Fragment Code details"
 					+ "\n3.Transaction Details\n4.Transaction Objects(R&D progress)"
-					+ "\n5.Transaction List "+"\n6.Technology Details"+"\n7.Inventory Details"+"\n8.Database Structure"+"\n9.Database Table Details"+"\n10.Sole Transaction"+"\n11.Sole Object Details"+"\n");
-			choice = s.nextInt();
+					+ "\n5.Transaction List "+"\n6.Technology Details"+"\n7.Inventory Details"+"\n8.Database Structure"+"\n9.Database Table Details"+"\n10.Sole Transaction"+"\n11.Sole Transaction Object Details"+"\n12."+
+					"\n13.Show and fetch Transaction objects😀"+"\n14."+"\n15.");
+			choice = scanner.nextInt();
 			switch (choice) {
 				case 1:
 					handleAnimeApi();
@@ -243,29 +243,120 @@ public class ModernizApplication {
 				case 11:
 					soleTransactionobject();
 					break;
+				case 12:
+//					transactionDetailsResponse = soleTransactionlist(); // Assign the response to transactionDetailsResponse
+					soleTransactionlist();
+//					showAndFetchTransactionObjects(scanner, transactionDetailsResponse); // Pass transactionDetailsResponse to the method
+					break;
+				case 13:
+					soleTransactionlist();
+					showAndFetchTransactionObjects(scanner, transactionDetailsResponse);
+//					enterAipIdForTransactionObjects();
+					break;
+				case 14:
+
+//					soleTransactionobject();
+					break;
 				default:
 					System.out.println("INVALID CHOICE! ENTER AGAIN!");
 			}
-		} while (choice != 5);
+		} while (choice != 14);
 	}
 
 	private static void soleTransactionobject() {
-		String url = "http://localhost:8083/imaging/api/domains/default/apps/Appscribe/transaction/8830/level5/objects?external=1";
+		try {
+			String url = "http://localhost:8083/imaging/api/domains/default/apps/Appscribe/transaction/8830/level5/objects?external=1";
+			WebClient webClient = WebClient.builder()
+					.defaultHeaders(headers -> {
+						headers.add("accept", "application/json;charset=utf-8");
+//					headers.add("domain-name", "default");
+						headers.add("x-api-key", "8Svtl4Qi.xvSDLU0Bi7syc9OuO8Ep7ctQwGVnYQiZ");
+//					headers.add("Connection","keep-alive");
+//					headers.add("Accept-Encoding","gzip,deflate,br");
+					})
+					.build();
+			String responseBody = fetchResponseBody(webClient, url);
+			printResponse(responseBody);
+		}catch (Exception e) {
+				System.out.println("Error occurred: " + e.getMessage());
+			}
+	}
+
+//	private static void showAndFetchTransactionObjects1(Scanner scanner,String transactionDetailsResponse) {
+//		// Assuming you have the response from "Transaction Details" API stored in a variable named "transactionDetailsResponse"
+////		String transactionDetailsResponse = ""; // Replace this with the actual response
+//		JsonParser parser = new JsonParser();
+//		JsonObject jsonResponse = parser.parse(transactionDetailsResponse).getAsJsonObject();
+//		JsonObject success = jsonResponse.getAsJsonObject("success");
+//		JsonArray nodes = success.getAsJsonObject("graph").getAsJsonArray("nodes");
+//
+//		System.out.println("List of AIP IDs:");
+//		for (JsonElement node : nodes) {
+//			JsonObject data = node.getAsJsonObject().getAsJsonObject("data");
+//			if (data.has("AipId")) {
+//				System.out.println(data.get("AipId").getAsString());
+//			}
+//		}
+//
+//		System.out.println("Enter the AIP ID for Transaction Objects:");
+//		int aipId = scanner.nextInt();
+//		fetchTransactionObjects(aipId);
+//	}
+
+	private static void showAndFetchTransactionObjects(Scanner scanner, String transactionDetailsResponse) {
+		try {
+			// Assuming you have the response from "Transaction Details" API stored in a variable named "transactionDetailsResponse"
+			JsonParser parser = new JsonParser();
+			JsonObject jsonResponse = parser.parse(transactionDetailsResponse).getAsJsonObject();
+
+			JsonObject success = jsonResponse.getAsJsonObject("success");
+			JsonArray objects = success.getAsJsonArray("objects");
+
+			System.out.println("List of AIP IDs:");
+			for (JsonElement object : objects) {
+				JsonObject objectData = object.getAsJsonObject();
+				String aipId = objectData.get("aipId").getAsString();
+				System.out.println(aipId);
+			}
+
+			System.out.println("Enter the AIP ID for Transaction Objects:");
+			int aipId = scanner.nextInt();
+			fetchTransactionObjects(aipId);
+		} catch (Exception e) {
+			System.out.println("Error occurred: " + e.getMessage());
+		}
+	}
+
+
+
+	private static void fetchTransactionObjects(int aipId) {
+		try{
+		String url = "http://localhost:8083/imaging/api/domains/default/apps/Appscribe/transaction/" + aipId + "/level5/objects?external=1";
+//		WebClient webClient = WebClient.create();
+//		String responseBody = fetchResponseBody(webClient, url);
+//		System.out.println("Response for AIP ID " + aipId + ":\n" + responseBody);
 		WebClient webClient = WebClient.builder()
 				.defaultHeaders(headers -> {
 					headers.add("accept", "application/json;charset=utf-8");
 //					headers.add("domain-name", "default");
 					headers.add("x-api-key", "8Svtl4Qi.xvSDLU0Bi7syc9OuO8Ep7ctQwGVnYQiZ");
+//					headers.add("Connection","keep-alive");
+//					headers.add("Accept-Encoding","gzip,deflate,br");
 				})
 				.build();
 		String responseBody = fetchResponseBody(webClient, url);
 		printResponse(responseBody);
+	}catch (Exception e) {
+		System.out.println("Error occurred: " + e.getMessage());
+	}
+
+
 
 	}
 
 	private static void soleTransactionlist() {
 //		http://localhost:8083/imaging/api/domains/default/apps/Appscribe/transaction/8830/level5/objects?external=1
-		String url = "http://localhost:8083/imaging/api/domains/default/apps/Canvas_Insights/transaction/list?offset=1&limit=2&search=a";
+		String url = "http://localhost:8083/imaging/api/domains/default/apps/Appscribe/transaction/list?offset=1&limit=2&search=a";
 		WebClient webClient = WebClient.builder()
 				.defaultHeaders(headers -> {
 					headers.add("accept", "application/json;charset=utf-8");
@@ -274,7 +365,9 @@ public class ModernizApplication {
 				})
 				.build();
 		String responseBody = fetchResponseBody(webClient, url);
-		printResponse(responseBody);
+		transactionDetailsResponse=responseBody;
+		printResponse(transactionDetailsResponse);
+//		return responseBody;
 	}
 
 	private static void dbStruct() {
@@ -336,7 +429,7 @@ public class ModernizApplication {
 
 
 	private static void transactionList() {
-		String url = "http://localhost:8083/imaging/api/domains/default/apps/Canvas_Insights/transaction/list?offset=1&limit=2&search=a";
+		String url = "http://localhost:8083/imaging/api/domains/default/apps/Appscribe/transaction/list?offset=1&limit=2&search=a";
 		WebClient webClient = WebClient.builder()
 				.defaultHeaders(headers -> {
 					headers.add("accept", "application/json");
