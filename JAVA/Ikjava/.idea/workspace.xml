@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ba77f440-5dff-45b6-8a11-cd2dbcf2e33a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Allboutarrays/MulitD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/java/arrays/MulitD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Allboutarrays/Oned.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/java/arrays/Oned.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Allboutarrays/Reve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/java/arrays/Reve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/java/arrays/FourthnThird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/java/arrays/FourthnThird.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2cD6vBIdWoLhGevrf2a5Wsfm8tS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "F:/Ebooks/Java/Repo PC/Core Java/Java_Projects/JAVA/Ikjava"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.Rshift">
+    <configuration name="FourthnThird" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="core.java.arrays.FourthnThird" />
+      <module name="Ikjava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="core.java.arrays.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LargestElement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="core.java.arrays.LargestElement" />
+      <module name="Ikjava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="core.java.arrays.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LargestandSum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="core.java.arrays.LargestandSum" />
+      <module name="Ikjava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="core.java.arrays.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Rshift" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="core.java.arrays.Rshift" />
+      <module name="Ikjava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="core.java.arrays.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SearchForElement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="core.java.arrays.SearchForElement" />
+      <module name="Ikjava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="core.java.arrays.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Rshift" />
+        <item itemvalue="Application.FourthnThird" />
+        <item itemvalue="Application.LargestandSum" />
+        <item itemvalue="Application.LargestElement" />
+        <item itemvalue="Application.SearchForElement" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ba77f440-5dff-45b6-8a11-cd2dbcf2e33a" name="Changes" comment="" />
+      <created>1707634032687</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707634032687</updated>
+    </task>
+    <servers />
+  </component>
+</project>
