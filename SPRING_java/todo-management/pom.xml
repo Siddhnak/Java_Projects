@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.spboot</groupId>
-	<artifactId>todo-management</artifactId>
+	<artifactId>Doha-Riff</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>todo-management</name>
 	<description>Demo project for Spring Boot To Do management</description>
@@ -41,6 +41,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
